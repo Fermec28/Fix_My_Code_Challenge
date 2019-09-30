@@ -22,6 +22,7 @@ class SinglePostActions {
             }
 
             request.get(config.baseUrl+'/ajax/post/'+id,function(err,response){
+                console.log(response)
                 var post = response.body;
                 var includes = post.includes || [], loadedIncludes = [];
                 var includeNum  = includes.length;
@@ -55,7 +56,7 @@ class SinglePostActions {
                     };
 
                     var type, path;
-                    for(const i=0; i<includes.length; i++) {
+                    for(let i=0; i<includes.length; i++) {
                         type = includes[i].type;
                         path = includes[i].path;
                         IncludeHandler.handleInclude(type, path, includeCallback);
